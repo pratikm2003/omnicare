@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Banking Support - Login</title>
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+
+    #particles-js {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    position: absolute;
+}
+  .form-container, .login-container {
+    position: relative;
+    z-index: 10;
+}                 
+
+  </style>
+</head>
+<body class="login-body">
+  <div class="login-container">
+    <h1 class="title">List Software Pvt. Ltd</h1>
+    <form id="loginForm" class="login-form">
+      <div class="input-group">
+        <label for="username">Username</label>
+        <input type="text" id="username" placeholder="Enter Username" required autofocus />
+      </div>
+      <div class="input-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="Enter Password" required />
+      </div>
+      <button type="submit" class="btn">Login</button>
+    </form>
+    <p class="footer-text">© 2025 Banking Support System</p>
+  </div>
+  <div id="particles-js"></div>
+
+  <script src="script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+<script>
+particlesJS("particles-js", {
+  "particles": {
+    "number": {
+      "value": 60
+    },
+    "color": {
+      "value": "#ffffff"
+    },
+    "shape": {
+      "type": "circle"
+    },
+    "opacity": {
+      "value": 0.5
+    },
+    "size": {
+      "value": 3
+    },
+    "line_linked": {
+      "enable": true,
+      "distance": 150,
+      "color": "#ffffff",
+      "opacity": 0.3,
+      "width": 1
+    },
+    "move": {
+      "enable": true,
+      "speed": 6,
+      "direction": "none",
+      "out_mode": "out"
+    }
+  },
+  "interactivity": {
+    "events": {
+      "onhover": {
+        "enable": true,
+        "mode": "grab"
+      }
+    }
+  }
+});
+</script>
+<script>
+document.getElementById("loginForm").addEventListener("submit", async function(e) {
+    e.preventDefault();
+
+    const username = document.getElementById("username").value.trim();
+    const password = document.getElementById("password").value.trim();
+
+    const res = await fetch("http://localhost:8080/api/users/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username, password })
+    });
+
+    const data = await res.json();
+
+    if (data.success) {
+
+        // ⭐ Save username globally
+        localStorage.setItem("loggedUser", username);
+
+       
+        window.location.href = "home.html";
+
+    } else {
+        alert("Invalid username or password");
+    }
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,420 @@
+
+#select {
+    cursor: pointer;
+    background-repeat: no-repeat;
+    height: 40px;
+    width: 115px;
+    background-color: rgb(255, 109, 31);
+    
+}/* ---- TOP BUTTON ---- */
+#topBtn {
+  position: fixed;
+  top: 20px;
+  right: 17px;
+  background: none;
+  color: rgb(0, 0, 0);
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 3px solid #e67220;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  display: none;  /* hide by default */
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  box-shadow: 0 0 8px rgba(0,0,0,0.4);
+  transition: 0.3s ease;
+}
+
+#topBtn:hover {
+  background: none;
+  transform: scale(1.1);
+}
+
+.checkbox-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 10px;
+      justify-content: center;
+    }
+    .checkbox-group label {
+      font-size: 14px;
+      cursor: pointer;
+    }
+    .ticket-card p {
+      margin: 4px 0;
+    }
+
+    .solution-section {
+  width: 100%;
+  max-width: 1400px;  
+  margin: 0 auto;
+  padding: 20px;
+}
+
+#solutionBox {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 25px;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;    /* 👉 THIS FIXES THE CENTER ALIGNMENT */
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+
+.ticket-card {
+  overflow-wrap: break-word;
+  word-break: break-word;
+  white-space: normal;
+}
+
+
+.ticket-card p {
+  margin: 6px 0;
+}
+
+#solutionBox h3,
+#solutionBox > p,
+#solutionBox > hr {
+  grid-column: 1 / -1 !important;   /* FULL ROW घेईल */
+}
+
+
+  .ticket-active {
+  border: 3px solid #28a745 !important;
+  box-shadow: 0 0 12px rgba(40,167,69,0.6);
+  transition: all 0.25s ease-in-out;
+}
+
+
+
+
+.ticket-card {
+  transition: all 0.25s ease-in-out;
+  cursor: pointer;
+}
+
+.ticket-active {
+  border: 2px solid #28a745 !important;
+  box-shadow: 0 0 12px rgba(40,167,69,.5);
+  transform: scale(1.02);
+  animation: glowEffect 0.4s ease-out;
+}
+
+@keyframes glowEffect {
+  0%   { box-shadow: 0 0 2px rgba(40,167,69,0.1); }
+  50%  { box-shadow: 0 0 18px rgba(40,167,69,0.5); }
+  100% { box-shadow: 0 0 12px rgba(40,167,69,0.4); }
+}
+
+
+
+
+@keyframes glowEffect {
+  0%   { box-shadow: 0 0 5px rgba(40,167,69,0.1); }
+  50%  { box-shadow: 0 0 18px rgba(40,167,69,0.6); }
+  100% { box-shadow: 0 0 12px rgba(40,167,69,0.4); }
+}
+
+
+/* Normal ticket card */
+.ticket-card {
+  transition: all 0.25s ease;
+  overflow: visible;       /* content कधीच कट होणार नाही */
+}
+
+/* Highlight (Click / Arrow keys) */
+.ticket-active {
+    background: #d4ffd4 !important;
+    font-weight: bold;
+}
+
+
+/* Double-click → Full Row Expand */
+.expand-full {
+  grid-column: 1 / -1 !important;
+  transform: scale(1.02);
+  background: #ffffff;
+  box-shadow: 0 0 15px rgba(0,0,0,0.15);
+}
+
+/* Solution container */
+#solutionBox {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow-x: auto;
+    margin-top: 20px;
+    overflow-x: visible !important;
+    overflow-y: visible !important;
+    display: block;
+}
+
+/* Table */
+.ticket-table, table {
+    width: 1350px !important;
+    border-collapse: collapse;
+    table-layout: auto !important;
+    margin-left: 5px;
+}
+
+.ticket-table th,
+.ticket-table td,
+table th,
+table td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    vertical-align: top;
+    word-break: break-word;
+    white-space: normal;
+}
+
+/* header bg */
+.ticket-table thead, table thead {
+    background: #f7f7f7;
+    font-weight: bold;
+}
+
+/* clickable date */
+.dateSortBtn {
+    cursor: pointer;
+    color: blue;
+}
+
+/* highlight selected row */
+.ticket-active {
+    background: #d4ffd4 !important;
+    font-weight: bold;
+}
+
+/* CMS link styling */ 
+.ticket-table a, table a {
+    color: blue;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+
+/* 🔥 Sticky Table Header */
+.sticky-header th {
+    position: sticky;
+    top: 0;
+    background: rgb(161, 190, 240);
+    z-index: 5;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+
+/* FULL TABLE WIDTH */
+#solutionBox table {
+    width: 100%;
+    table-layout: fixed; /* Column width control मिळते */
+    border-collapse: collapse;
+}
+
+/* COLUMN WIDTH CUSTOMIZATION */
+#solutionBox table th:nth-child(1),
+#solutionBox table td:nth-child(1) {
+    width: 4%;   /* No. */
+   
+}
+
+#solutionBox table th:nth-child(2),
+#solutionBox table td:nth-child(2) {
+    width: 7%;  /* Date */
+}
+
+#solutionBox table th:nth-child(3),
+#solutionBox table td:nth-child(3) {
+    width: 9%;  /* Bank */
+}
+
+#solutionBox table th:nth-child(4),
+#solutionBox table td:nth-child(4) {
+    width: 6%;   /* CMS */
+}
+
+#solutionBox table th:nth-child(5),
+#solutionBox table td:nth-child(5) {
+    width: 6.5%;   /* Product */
+}
+
+#solutionBox table th:nth-child(6),
+#solutionBox table td:nth-child(6) {
+    width: 6%;   /* Program */
+}
+
+#solutionBox table th:nth-child(7),
+#solutionBox table td:nth-child(7) {
+    width: 30%;  /* Problem (large) */
+}
+
+#solutionBox table th:nth-child(8),
+#solutionBox table td:nth-child(8) {
+    width: 30%; /* Solution */
+}
+
+/* TEXT WRAP */
+#solutionBox table td {
+    word-wrap: break-word;
+    white-space: normal;
+    padding: 8px;
+}
+
+
+
+.clamp3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    position: relative;
+}
+
+.clamp3.expanded-text {
+    -webkit-line-clamp: unset !important;
+    max-height: none;
+    overflow: visible;
+}
+
+.see-more-btn {
+    color: blue;
+    font-weight: bold;
+    cursor: pointer;
+    display: inline-block;
+    margin-top: 5px;
+    float: right; 
+}
+
+
+.ticket-row {
+  transition: background 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.ticket-active {
+  background: #ffffff !important;
+  outline: 1px solid #85eaac !important;
+  font-weight: bold;
+}
+
+
+#solutionBox td, 
+#solutionBox th {
+    white-space: normal !important;
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+}
+
+
+
+
+/* Export */
+.btn1 {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 10px;
+    font-size: 12px;
+    background: #f3f3f3;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+}
+
+.btn1:hover {
+    background: #e0e0e0;
+    transform: scale(1.05);
+}
+
+.btn1 img {
+    width: 14px;
+    height: 14px;
+}
+/* ============================
+   PDF / PRINT FIX (ONLY)
+   ============================*/
+@media print {
+
+    /* Hide everything except solutionBox */
+    body * {
+        visibility: hidden !important;
+    }
+
+    #solutionBox, 
+    #solutionBox * {
+        visibility: visible !important;
+    }
+
+    #solutionBox {
+        position: absolute !important;
+        left: 0 !important;
+        top: 0 !important;
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        display: block !important;
+    }
+
+    /* Full-width table */
+    #solutionBox table {
+        width: 100% !important;
+        border-collapse: collapse !important;
+        table-layout: auto !important;
+    }
+
+    /* Fix header color in print */
+    #solutionBox th {
+        background: rgb(161, 190, 240) !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+
+    /* Sticky header off (PDF मध्ये समस्या करते) */
+    .sticky-header th {
+        position: static !important;
+        box-shadow: none !important;
+    }
+
+    /* Clamp remove — so full text appears */
+    .clamp3 {
+        -webkit-line-clamp: unset !important;
+        overflow: visible !important;
+        max-height: none !important;
+    }
+
+    .see-more-btn {
+        display: none !important;
+    }
+
+    /* Remove grid layout (print मध्ये समस्या करते) */
+    #solutionBox {
+        display: block !important;
+    }
+}
+
+
+table {
+  border-collapse: collapse !important;
+  width: 100% !important;
+  table-layout: fixed !important;   /* हे सर्वात महत्त्वाचे */
+}
+
+td, th {
+  border: 1px solid #ccc;
+  padding: 6px;
+  word-wrap: break-word;
+  text-align: left;
+}
+
+.report-container {
+  width: 100% !important;
+}

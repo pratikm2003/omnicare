@@ -1,0 +1,782 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Banking Support - Home</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="stylesheet" href="home.css"/>
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+
+  
+</head>
+
+<body class="home-body">
+
+  <script>
+// ❗ Check if user is logged in
+if (!localStorage.getItem("loggedUser")) {
+    window.location.href = "login.html";
+}
+</script>
+  <header class="navbar">
+    <h2 class="logo">Banking Support</h2>
+    <nav>
+      <ul>
+        <li><a href="designdash.html">Dashboard</a></li>
+        <li><a href="home.html">Home</a></li>
+        <li><a href="#" onclick="logout()">Logout</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero">
+    
+    <img src="List.png" height="130" width="150" alt="List" />
+    <center>
+      <h1>List Software Support Team</h1>
+      <p>Submit your issue, and we’ll find the best solution for you.</p>
+    </center>
+  </section>
+
+  <button id="toggleFilter" class="btn">Filter Tickets</button>
+
+  <section id="filters" class="filter-section" style="display: none;">
+    <h2>Filter Tickets</h2>
+    <form id="filterForm">
+      <div class="filter-group">
+        <label for="programFilter">Program :</label>
+        <select id="programFilter" name="programFilter">
+          <option value="">All Programs</option>
+          <option value="ATM - 1 (P)">ATM - 1 (P)</option>
+          <option value="Admin - 2 (P)">Admin - 2 (P)</option>
+          <option value="Authority Managements - 3 (P)">Authority Managements - 3 (P)</option>
+          <option value="BCBF - 4 (P)">BCBF - 4 (P)</option>
+          <option value="BG - 5 (P)">BG - 5 (P)</option>
+          <option value="Backlog - 6 (P)">Backlog - 6 (P)</option>
+          <option value="Batch Processing - 7 (P)">Batch Processing - 7 (P)</option>
+          <option value="Bills - 8 (P)">Bills - 8 (P)</option>
+          <option value="Branch Interest Calculation - 9 (P)">Branch Interest Calculation - 9 (P)</option>
+          <option value="CRR/SLR - 10 (P)">CRR/SLR - 10 (P)</option>
+          <option value="Cheque Book - 11 (P)">Cheque Book - 11 (P)</option>
+          <option value="Cheque Book Management - 12 (P)">Cheque Book Management - 12 (P)</option>
+          <option value="Clearing - 13 (P)">Clearing - 13 (P)</option>
+          <option value="Counter - 14 (P)">Counter - 14 (P)</option>
+          <option value="Customer master - 48 (P)">Customer master - 48 (P)</option>
+          <option value="DEAF - 15 (P)">DEAF - 15 (P)</option>
+          <option value="Data Conversion - 16 (P)">Data Conversion - 16 (P)</option>
+          <option value="Database Maintenance - 52 (P)">Database Maintenance - 52 (P)</option>
+          <option value="Deaf - 17 (P)">Deaf - 17 (P)</option>
+          <option value="Delivery Channels - 18 (P)">Delivery Channels - 18 (P)</option>
+          <option value="Dual login auth. (2FA) - 54 (P)">Dual login auth. (2FA) - 54 (P)</option>
+          <option value="ECS - 19 (P)">ECS - 19 (P)</option>
+          <option value="FIR - 53 (P)">FIR - 53 (P)</option>
+          <option value="GST - 20 (P)">GST - 20 (P)</option>
+          <option value="Interest/Penalty - 21 (P)">Interest/Penalty - 21 (P)</option>
+          <option value="Inventory - 22 (P)">Inventory - 22 (P)</option>
+          <option value="Investments - 23 (P)">Investments - 23 (P)</option>
+          <option value="KYC - 24 (P)">KYC - 24 (P)</option>
+          <option value="Loan - 25 (P)">Loan - 25 (P)</option>
+          <option value="Loan Sanctioning - 26 (P)">Loan Sanctioning - 26 (P)</option>
+          <option value="Locker - 27 (P)">Locker - 27 (P)</option>
+          <option value="Membership Module - 28 (P)">Membership Module - 28 (P)</option>
+          <option value="Microfinance - 29 (P)">Microfinance - 29 (P)</option>
+          <option value="Mobile Banking - 30 (P)">Mobile Banking - 30 (P)</option>
+          <option value="NPA - 31 (P)">NPA - 31 (P)</option>
+          <option value="New Branch Add - 50 (P)">New Branch Add - 50 (P)</option>
+          <option value="ODFD/SI/FD Renewal - 32 (P)">ODFD/SI/FD Renewal - 32 (P)</option>
+          <option value="OTS - 33 (P)">OTS - 33 (P)</option>
+          <option value="PM Insurance - 34 (P)">PM Insurance - 34 (P)</option>
+          <option value="Payroll - 35 (P)">Payroll - 35 (P)</option>
+          <option value="Pigmi - 36 (P)">Pigmi - 36 (P)</option>
+          <option value="RTGS/NEFT - 37 (P)">RTGS/NEFT - 37 (P)</option>
+          <option value="RTGS/NEFT/IMPS - 38 (P)">RTGS/NEFT/IMPS - 38 (P)</option>
+          <option value="Reconciliation - 39 (P)">Reconciliation - 39 (P)</option>
+          <option value="Recurring - 40 (P)">Recurring - 40 (P)</option>
+          <option value="Remittances - 41 (P)">Remittances - 41 (P)</option>
+          <option value="Reports - 51 (P)">Reports - 51 (P)</option>
+          <option value="SMS - 42 (P)">SMS - 42 (P)</option>
+          <option value="Shares - 43 (P)">Shares - 43 (P)</option>
+          <option value="TDS - 44 (P)">TDS - 44 (P)</option>
+          <option value="Transactions - 45 (P)">Transactions - 45 (P)</option>
+          <option value="User Management - 47 (P)">User Management - 47 (P)</option>
+          <option value="Version Updation - 49 (P)">Version Updation - 49 (P)</option>
+          <option value="Voucher Uploading - 46 (P)">Voucher Uploading - 46 (P)</option>
+          <option value="ePassbook - 55 (P)">ePassbook - 55 (P)</option>
+        </select>
+      </div>
+
+      <div class="filter-group">
+        <label for="productFilter">Product :</label>
+        <select id="productFilter" name="productFilter">
+         <option value="">All Products</option>
+          <option value="APBS/DBTL">APBS/DBTL</option>   
+          <option value="ATM Interface">ATM Interface</option>
+          <option value="ATM Charges Module">ATM Charges Module</option>
+          <option value="Anti Money Laundering">Anti Money Laundering</option>
+          <option value="Arista Payment Solution">Arista Payment Solution</option>
+          <option value="Audit Module Product">Audit Module Product</option>
+          <option value="BCBF Management">BCBF Management</option>
+          <option value="C KYC">C KYC</option>
+          <option value="CTS Interface">CTS Interface</option>
+          <option value="Credit Appraisal System">Credit Appraisal System</option>
+          <option value="Credit Bureau">Credit Bureau</option>
+          <option value="Custodian - CBS">Custodian - CBS</option>
+          <option value="Custodian - CBS(HO)">Custodian - CBS (HO)</option>
+          <option value="Custodian - CBS(HO)">Custodian - CBS(HO)</option>
+          <option value="Custodian - HO(CBS)">Custodian - HO(CBS)</option>
+          <option value="E KYC">E KYC</option>
+          <option value="E Passbook">E Passbook</option>
+          <option value="Electronic Fund Transfer">Electronic Fund Transfer</option>
+          <option value="FCO">FCO</option>
+          <option value="IMPS">IMPS</option>
+          <option value="Internet Banking System">Internet Banking System</option>
+          <option value="Loan Recovery">Loan Recovery</option>
+          <option value="Mobile Banking System">Mobile Banking System</option>
+          <option value="Mobile Based Pigmy Collection">Mobile Based Pigmy Collection</option>
+          <option value="Report Writing Tool">Report Writing Tool</option>
+          <option value="SFMS Interface">SFMS Interface</option>
+          <option value="Statement on Email">Statement on Email</option>
+
+
+          <option value="Dual Login Authen using QR">Dual Login Authen using QR</option>
+          <option value="FIR">FIR</option>
+          <option value="LIF">LIF</option>
+          <option value="LVF">LVF</option>
+          <option value="SMS Mitra">SMS Mitra</option>
+
+        </select>
+      </div>
+
+      <div class="filter-group">
+        <label for="dateFilter">First Date :</label>
+        <input type="date" id="dateFilter" name="dateFilter" />
+      </div>
+
+      <div class="filter-group">
+        <label for="callIdFilter">Last Date :</label>
+        <input type="date" id="callIdFilter" name="callIdFilter" />
+      </div>
+
+
+      <div class="filter-group">
+        <label for="bankNameFilter">Bank Name :</label>
+        <input type="text" id="bankNameFilter" name="bankNameFilter" placeholder="Enter Bank Name" />
+      </div>
+
+      <div class="filter-group">
+        <label for="cmsFilter">CMS :</label>
+        <input type="text" id="cmsFilter" name="cmsFilter" placeholder="Enter CMS" />
+      </div>
+        
+      <button type="submit" class="btn">Apply Filters</button>
+      <button type="button" class="btn" onclick="clearFilters()">Clear Filters</button>
+    </form>
+  </section>
+  
+
+  <section id="support" class="problem-section">
+    <h2>Send Problem</h2>
+    <form id="problemForm">
+      <textarea id="problemInput" placeholder="Type your problem here..." required autofocus></textarea>
+      <button type="submit" class="btn">Send</button>
+    </form>
+  </section>
+
+  <section id="solution" class="solution-section">
+    <h2>Solution</h2>
+
+    <div class="checkbox-group">
+      <label><input type="checkbox" class="displayOption" value="date" checked> Call Date</label>
+      <label><input type="checkbox" class="displayOption" value="bankName" checked> Bank Name</label>
+      <label><input type="checkbox" class="displayOption" value="cms" checked> CMS</label>
+      <label><input type="checkbox" class="displayOption" value="product" checked> Product</label>
+      <label><input type="checkbox" class="displayOption" value="program" checked> Program</label>
+      <label><input type="checkbox" class="displayOption" value="problem" checked> Problem</label>
+      <label><input type="checkbox" class="displayOption" value="solution" checked> Solution</label>
+    </div>
+
+      <!-- Export -->
+      <div style="margin:10px 0; display:flex; gap:8px;">
+
+    <button id="exportExcel" class="btn1">
+        <img src="https://cdn-icons-png.flaticon.com/512/732/732220.png" />
+        Excel
+    </button>
+
+    <button id="exportPDF" class="btn1">
+        <img src="https://cdn-icons-png.flaticon.com/512/337/337946.png" />
+        PDF
+    </button>
+
+</div>
+
+
+    <div id="solutionBox">Your solution will appear here after you submit a problem.</div>
+  </section>
+
+  <!--TOP -->
+  <button id="topBtn">TOP</button>
+
+
+  <footer>
+    <p>© 2025 List Banking Support System. All Rights Reserved.</p>
+  </footer>
+
+  <!-- 💬 Chatbot -->
+ <script src='https://cdn.jotfor.ms/agent/embedjs/019a57b5b33a7439995a3da4f028ac899a67/embed.js'>
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+  const toggleFilterBtn = document.getElementById("toggleFilter");
+  const filterSection = document.getElementById("filters");
+  const filterForm = document.getElementById("filterForm");
+  const problemForm = document.getElementById("problemForm");
+  const solutionBox = document.getElementById("solutionBox");
+  const displayOptions = document.querySelectorAll(".displayOption");
+
+  let lastFilterData = {};
+  let lastProblem = "";
+  let lastTickets = [];
+  let dateSortAsc = true;
+
+
+
+  // ✅ Toggle Filter Section
+  toggleFilterBtn.addEventListener("click", () => {
+    filterSection.style.display =
+      filterSection.style.display === "none" || !filterSection.style.display
+        ? "block"
+        : "none";
+  });
+
+  // ✅ When filters submitted
+  filterForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const programText = document.getElementById("programFilter").value?.trim() || "";
+    let programNumber = "";
+    if (programText) {
+      const match = programText.match(/- *(\d+)/);
+      programNumber = match ? match[1] : programText.replace(/\D/g, "");
+    }
+
+    const filters = {
+      fromDate: document.getElementById("dateFilter").value || "",
+      toDate: document.getElementById("callIdFilter").value || "",
+      bankName: document.getElementById("bankNameFilter").value?.trim() || "",
+      cms: document.getElementById("cmsFilter").value?.trim() || "",
+      problem: document.getElementById("problemInput").value?.trim() || "",
+      product: document.getElementById("productFilter").value?.trim() || "",
+      program: programNumber || ""
+    };
+
+    lastFilterData = filters;
+    await fetchSolutions(filters.problem, filters);
+  });
+
+  // ✅ When ONLY problem submitted (Important FIX added)
+  problemForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const problemText = document.getElementById("problemInput").value.trim();
+    if (!problemText) return alert("Please enter your problem.");
+
+    lastProblem = problemText;
+
+    // ⭐ Always include problem in filters
+    const tempFilters = { ...lastFilterData, problem: problemText };
+
+    await fetchSolutions(problemText, tempFilters);
+  });
+
+  // Checkbox toggles
+  displayOptions.forEach(opt =>
+    opt.addEventListener("change", () => renderTickets(lastTickets))
+  );
+    
+  // ==============================
+  //      FETCH SOLUTIONS
+  // ==============================
+  async function fetchSolutions(problemText, filters) {
+    try {
+
+      const params = new URLSearchParams();
+
+       params.append("username", localStorage.getItem("loggedUser") || "Unknown");
+
+      // ⭐ Only send NON-empty filters
+      function addFilter(key, value) {
+        if (value !== undefined && value !== null && value.toString().trim() !== "") {
+          params.append(key, value.trim());
+        }
+      }
+
+      addFilter("fromDate", filters.fromDate);
+      addFilter("toDate", filters.toDate);
+      addFilter("bankName", filters.bankName);
+      addFilter("cms", filters.cms);
+      addFilter("problem", filters.problem);
+      addFilter("product", filters.product);
+      addFilter("program", filters.program);
+
+      // ❗ Allow PROBLEM-ONLY search
+      if (!problemText && [...params.entries()].length === 0) {
+        solutionBox.innerHTML = `<p style="color:gray;">Please enter a problem or apply at least one filter.</p>`;
+        return;
+      }
+
+      solutionBox.innerHTML = "<p>⏳ Searching... please wait.</p>";
+
+      const response = await fetch(
+        `http://localhost:8080/api/tickets/solution?${params.toString()}`,
+        { method: "GET" }
+      );
+
+      if (!response.ok) throw new Error(`Server error: ${response.status}`);
+
+      let tickets = await response.json();
+
+      // Exact program match
+      if (filters.program) {
+        const progExact = filters.program.trim();
+        tickets = tickets.filter(t => t.program?.trim() === progExact);
+      }
+
+      // ==========================
+      //   DATE RANGE LOGIC
+      // ==========================
+      const from = filters.fromDate ? new Date(filters.fromDate) : null;
+      const to = filters.toDate ? new Date(filters.toDate) : null;
+
+      if (from || to) {
+        tickets = tickets.filter(t => {
+          if (!t.date) return false;
+          const d = new Date(t.date);
+
+          if (from && !to)
+            return d.toISOString().split("T")[0] === from.toISOString().split("T")[0];
+
+          if (!from && to) return d <= to;
+
+          if (from && to) return d >= from && d <= to;
+
+          return true;
+        });
+      }
+
+      // If NO MATCH FOUND
+      if (!Array.isArray(tickets) || tickets.length === 0) {
+        solutionBox.innerHTML = `<p style="color:red;">No records found for your filters.</p>`;
+        return;
+      }
+
+        if (activeRowIndex >= tickets.length) {
+          activeRowIndex = 0;
+}
+
+      lastTickets = tickets;
+      renderTickets(tickets, problemText);
+      
+      
+
+    
+
+    } catch (err) {
+      console.error("❌ Fetch Error:", err);
+      solutionBox.innerHTML = `<p style="color:red;">⚠️ Could not connect to backend (port 8080).</p>`;
+    }
+  }
+
+  
+
+  // ==============================
+  //      RENDER RESULTS
+  // ==============================
+  function renderTickets(tickets, problemText = "") {
+    if (!tickets || tickets.length === 0) {
+        solutionBox.innerHTML = `<p style="color:red;">No results found.</p>`;
+        return;
+    }
+
+    const visibleFields = Array.from(displayOptions)
+        .filter(opt => opt.checked)
+        .map(opt => opt.value);
+
+    let html = "";
+    if (problemText)
+        html += `<h3>Search Results for:</h3><p><b>${problemText}</b></p><hr/>`;
+
+    html += `
+        <table border="1" cellpadding="6" cellspacing="0"
+       class="sticky-header"
+       style="width:100%; border-collapse:collapse;">
+
+            <thead>
+                <tr>
+                    <th>No</th>
+                    ${visibleFields.includes("date") 
+                        ? `<th class="dateSortBtn" style="cursor:pointer;color:blue;">Date ⬍</th>` 
+                        : ""}
+                    ${visibleFields.includes("bankName") ? "<th>Bank</th>" : ""}
+                    ${visibleFields.includes("cms") 
+                        ? `<th class="cmsSortBtn" style="cursor:pointer;color:blue;">CMS ⬍</th>` 
+                        : ""}
+
+                    ${visibleFields.includes("product") ? "<th>Product</th>" : ""}
+                    ${visibleFields.includes("program") ? "<th>Program</th>" : ""}
+                    ${visibleFields.includes("problem") ? "<th>Problem</th>" : ""}
+                    ${visibleFields.includes("solution") ? "<th>Solution</th>" : ""}
+                </tr>
+            </thead>
+            <tbody>
+    `;
+
+    tickets.forEach((t, i) => {
+
+        let cmsLink = "-";
+        if (t.cms) {
+            const cleanId = t.cms.replace(/,/g, "").trim();
+            cmsLink = `
+                <a href="http://172.100.30.3:8080/apex/f?p=100:90:0::NO::P90_CALLID:${cleanId}"
+                   target="_blank" style="color:blue; font-weight:bold;">
+                   ${t.cms}
+                </a>`;
+        }
+
+        html += `
+            <tr class="ticket-row" id="ticket-${i}">
+                <td>${i + 1}</td>
+
+                ${visibleFields.includes("date") ? `<td>${t.date || "-"}</td>` : ""}
+                ${visibleFields.includes("bankName") ? `<td>${t.bankName || "-"}</td>` : ""}
+                ${visibleFields.includes("cms") ? `<td>${cmsLink}</td>` : ""}
+                ${visibleFields.includes("product") ? `<td>${t.product || "-"}</td>` : ""}
+                ${visibleFields.includes("program") ? `<td>${t.program || "-"}</td>` : ""}
+
+                ${visibleFields.includes("problem") ? `
+                    <td>
+                        <div class="clamp3">${t.problem || "-"}</div>
+                        ${(t.problem && t.problem.length > 120)
+                            ? `<span class="see-more-btn" onclick="toggleMore(this)">See More</span>`
+                            : ""}
+                    </td>` : ""}
+
+                ${visibleFields.includes("solution") ? `
+                    <td>
+                        <div class="clamp3">${t.solution || "-"}</div>
+                        ${(t.solution && t.solution.length > 120)
+                            ? `<span class="see-more-btn" onclick="toggleMore(this)">See More</span>`
+                            : ""}
+                    </td>` : ""}
+            </tr>
+        `;
+    });
+
+    html += `
+            </tbody>
+        </table>
+    `;
+
+    solutionBox.innerHTML = html;
+
+    enableRowHighlight();   // ⭐ REQUIRED
+}
+
+// ==========================
+//   CMS SORT
+// ==========================
+let cmsSortAsc = true;
+
+document.addEventListener("click", (e) => {
+    if (!e.target.classList.contains("cmsSortBtn")) return;
+
+    if (!lastTickets || lastTickets.length === 0) return;
+
+    cmsSortAsc = !cmsSortAsc;
+
+    lastTickets.sort((a, b) => {
+        let x = (a.cms || "").toString().replace(/,/g, "");
+        let y = (b.cms || "").toString().replace(/,/g, "");
+
+        if (!isNaN(x) && !isNaN(y)) {
+            return cmsSortAsc ? Number(x) - Number(y) : Number(y) - Number(x);
+        }
+
+        return cmsSortAsc ? x.localeCompare(y) : y.localeCompare(x);
+    });
+
+    renderTickets(lastTickets, lastProblem);
+});
+
+// ==========================
+//   DATE SORT
+// ==========================
+document.addEventListener("click", (e) => {
+    if (!e.target.classList.contains("dateSortBtn")) return;
+
+    if (!lastTickets || lastTickets.length === 0) return;
+
+    dateSortAsc = !dateSortAsc;
+
+    lastTickets.sort((a, b) => {
+        const d1 = a.date ? new Date(a.date) : new Date(0);
+        const d2 = b.date ? new Date(b.date) : new Date(0);
+
+        return dateSortAsc ? d1 - d2 : d2 - d1;
+    });
+
+    renderTickets(lastTickets, lastProblem);
+});
+
+
+
+// ==========================
+//   TABLE ROW NAVIGATION
+// ==========================
+let activeRowIndex = 0;
+
+function enableRowHighlight() {
+    const rows = document.querySelectorAll(".ticket-row");
+    if (rows.length === 0) return;
+
+    // Remove old highlight
+    rows.forEach(r => r.classList.remove("ticket-active"));
+
+    // Fix boundaries
+    if (activeRowIndex < 0) activeRowIndex = 0;
+    if (activeRowIndex >= rows.length) activeRowIndex = rows.length - 1;
+
+    // Add highlight to active row
+    const activeRow = rows[activeRowIndex];
+    activeRow.classList.add("ticket-active");
+
+    activeRow.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+    });
+
+    // CLICK → highlight row
+    rows.forEach((row, i) => {
+        row.addEventListener("click", () => {
+            activeRowIndex = i;
+            enableRowHighlight();
+        });
+    });
+}
+
+// ==========================
+//    KEYBOARD SUPPORT
+// ==========================
+document.addEventListener("keydown", (e) => {
+    const rows = document.querySelectorAll(".ticket-row");
+    if (rows.length === 0) return;
+
+    switch (e.key) {
+
+        case "ArrowDown":
+            e.preventDefault();
+            activeRowIndex++;
+            enableRowHighlight();
+            break;
+
+        case "ArrowUp":
+            e.preventDefault();
+            activeRowIndex--;
+            enableRowHighlight();
+            break;
+
+        case "Enter":
+            e.preventDefault();
+
+            const row = rows[activeRowIndex];
+            if (!row) return;
+
+            const cmsLink = row.querySelector("td a[href]");
+            if (cmsLink) {
+                window.open(cmsLink.href, "_blank");
+            }
+            break;
+    }
+});
+
+
+
+
+
+
+  // Clear filters
+  window.clearFilters = () => {
+  filterForm.reset();
+  lastFilterData = {};
+
+  // ⭐ Problem text  clear 
+  document.getElementById("problemInput").value = "";
+  lastProblem = "";
+
+  solutionBox.innerHTML =
+    `<p>Your solution will appear here after you submit a problem or apply filters.</p>`;
+};
+
+
+
+
+// ===== TOP BUTTON FUNCTIONALITY =====
+
+const topBtn = document.getElementById("topBtn");
+
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 300) {
+    topBtn.style.display = "flex";
+  } else {
+    topBtn.style.display = "none";
+  }
+});
+
+// SCROLL TO TOP
+topBtn.addEventListener("click", () => {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+});
+
+
+// Enter button send problem
+const textarea = document.getElementById("problemInput");
+  const form = document.getElementById("problemForm");
+
+  // ENTER → Send
+  textarea.addEventListener("keydown", function (e) {
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault(); 
+      form.requestSubmit(); 
+    }
+  });
+
+  // FORM SUBMIT
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const msg = textarea.value.trim();
+    if (!msg) return;
+
+    console.log("Problem Sent:", msg); 
+
+    
+  });
+
+
+
+  
+
+
+
+
+
+
+// ============= See More & Less =============
+window.toggleMore = function (btn) {
+
+    // Get the correct clamp3 div inside the same TD
+    const parent = btn.closest("td").querySelector(".clamp3");
+
+
+    if (!parent) return;  // safety
+
+    // Toggle full text
+    parent.classList.toggle("expanded-text");
+
+    // Update button text
+    btn.innerText = parent.classList.contains("expanded-text")
+        ? "See Less"
+        : "See More";
+};
+
+
+
+
+// ============= EXPORT EXCEL =============
+document.getElementById("exportExcel").addEventListener("click", () => {
+    if (!lastTickets || lastTickets.length === 0) {
+        alert("No data to export!");
+        return;
+    }
+
+    let csv = "No,Date,Bank,CMS,Product,Program,Problem,Solution\n";
+
+    lastTickets.forEach((t, i) => {
+        csv += `"${i+1}","${t.date||""}","${t.bankName||""}","${t.cms||""}","${t.product||""}","${t.program||""}","${t.problem||""}","${t.solution||""}"\n`;
+    });
+
+    const blob = new Blob([csv], { type: "text/csv" });
+    const url = URL.createObjectURL(blob);
+
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "tickets_export.csv";
+    a.click();
+    URL.revokeObjectURL(url);
+});
+
+
+// ============= EXPORT PDF =============
+document.getElementById("exportPDF").addEventListener("click", async () => {
+    const element = document.getElementById("solutionBox");
+
+    if (!element || element.innerHTML.trim().length === 0) {
+        alert("No data available to export!");
+        return;
+    }
+
+    await new Promise(resolve => setTimeout(resolve, 500));
+
+    const opt = {
+        margin: 5,
+        filename: "Support_Report.pdf",
+        image: { type: "jpeg", quality: 1 },
+        html2canvas: { 
+            scale: 3,
+            useCORS: true,
+            scrollY: 0, 
+            windowHeight: document.body.scrollHeight 
+        },
+        jsPDF: { unit: "mm", format: "a4", orientation: "landscape" },
+        pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
+    };
+
+    html2pdf().set(opt).from(element).save();
+});
+
+
+const element = document.getElementById("yourTableDiv");
+
+const opt = {
+  margin:       0.5,
+  filename:     'Support_Report.pdf',
+  image:        { type: 'jpeg', quality: 1 },
+  html2canvas:  { scale: 3, useCORS: true },
+  jsPDF:        { unit: 'pt', format: 'a4', orientation: 'landscape' }
+};
+
+
+
+
+
+});
+</script>
+<script>
+function logout() {
+    localStorage.removeItem("loggedUser");   // remove session
+    window.location.href = "login.html";     // go to login page
+}
+</script>
+
+
+
+
+
+
+</body>
+</html>
